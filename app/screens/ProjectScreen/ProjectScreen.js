@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, TouchableHighlight, TouchableOpacity, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, Text, FlatList, TouchableHighlight, TouchableOpacity, StyleSheet, Image, Dimensions, Share } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { Constants } from "expo";
 import { Ionicons } from "@expo/vector-icons";
@@ -67,10 +67,11 @@ class ProjectScreen extends Component {
     setStickyHeader = () => {
         var arr = [];
         var data = this.state.data;
+        var hackIndex = 1; // if flat list has header component
 
         data.map(item => {
             if (item.header) {
-                arr.push(data.indexOf(item));
+                arr.push(data.indexOf(item) + hackIndex);
             }
         });
 
@@ -78,12 +79,25 @@ class ProjectScreen extends Component {
         this.setState({ stickyHeaderIndices: arr });
     }
 
+    handleLongPress = (item) => {
+        Share.share({
+            title: 'Test Share Message',
+            message: `Test Share Message: ${item.name}`,
+            url: 'https://www.imdb.com/'
+        })
+            .then(res => console.log(res))
+            .catch(error => console.log(error))
+    }
+
     renderItem = ({ item }) => {
         if (item.header) {
+
+            let activeStyle = item.active === 'on' || item.active == true ? styles.dotActive : {};
+
             return (
                 <View style={styles.listHeaderContainer}>
                     <View style={styles.headerLeft}>
-                        {item.active && <View style={[styles.dot, styles.dotActive]} />}
+                        {item.active && <View style={[styles.dot, activeStyle]} />}
                         {item.active && <View style={styles.nanoSpacer} />}
                         <Text style={styles.text}>{item.name.toUpperCase()}</Text>
                     </View>
@@ -129,7 +143,7 @@ class ProjectScreen extends Component {
                 <TouchableHighlight
                     style={styles.touchContainer}
                     onPress={() => alert(item.name)}
-                    onLongPress={() => alert('Long Press')}
+                    onLongPress={() => this.handleLongPress(item)}
                     underlayColor={styles.$underlayColor}
                 >
                     <View>
@@ -205,6 +219,50 @@ class ProjectScreen extends Component {
             }} />)
     }
 
+    renderHeader = () => {
+        return (
+            <View>
+                <View style={{
+                    flex: 1,
+                    padding: 20,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: '#fff',
+                }}>
+                    <View style={{
+                        marginBottom: 15,
+                        width: 65,
+                        height: 65,
+                        borderRadius: 6,
+                        backgroundColor: '#F0C136',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}>
+                        <Text style={{
+                            color: '#fff',
+                            fontSize: 24
+                        }}>CE</Text>
+                    </View>
+
+                    <Text style={{
+                        fontSize: 19,
+                        fontWeight: '500'
+                    }}>Cecep Aprilianto</Text>
+
+                    <Text style={{
+                        fontSize: 14,
+                        color: '#ADB0B4'
+                    }}>@cecepaprilianto</Text>
+
+                </View>
+                <View style={{
+                    flex: 1,
+                    height: 1,
+                    backgroundColor: '#F4F4F5'
+                }} />
+            </View>
+        )
+    }
 
     render() {
         return (
@@ -219,6 +277,7 @@ class ProjectScreen extends Component {
                     refreshing={this.state.refreshing}
                     onEndReached={this.handleLoadMore}
                     onEndReachedThreshold={0}
+                    ListHeaderComponent={this.renderHeader}
                 />
             </View>
         );

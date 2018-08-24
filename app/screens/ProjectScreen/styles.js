@@ -7,6 +7,7 @@ const styles = EStyleSheet.create({
     $underlayColor: '#b5b8bc',
     $headerColor: '#ADB0B4',
     $active: '#20BE2F',
+    $inactive: '#F0C136',
     $marginLeftLikes: 5,
 
     text: {
@@ -62,7 +63,7 @@ const styles = EStyleSheet.create({
         fontSize: 16,
     },
     dot: {
-        backgroundColor: '$headerColor',
+        backgroundColor: '$inactive',
         width: 7,
         height: 7,
         borderRadius: 7 / 2,

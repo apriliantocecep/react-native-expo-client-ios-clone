@@ -6,8 +6,8 @@ export default data = [
     { name: "Get started with Expo", header: false, title: 'Get started with Expo', subtitle: 'Run projects from Expo XDE, CLI, or Snack.' },
 
     { name: "Recently in development", header: true, button: 'Help', active: true },
-    { name: "The Dark Knight", header: false, image: 'https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_UX182_CR0,0,182,268_AL_.jpg', title: 'The Dark Knight', subtitle: 'When the menace known as the Joker emerges from his mysterious past' },
-    { name: "Operation Finale", header: false, image: 'https://m.media-amazon.com/images/M/MV5BYzE1YjI2MjctZTY2Zi00NDBhLWIzYmMtNzMzMDgwZjE4MzUxXkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_UX182_CR0,0,182,268_AL_.jpg', title: 'Operation Finale', subtitle: 'A team of secret agents set out to track down the Nazi officer who masterminded the Holocaust.' },
+    { name: "The Dark Knight", header: false, image: 'https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_UX182_CR0,0,182,268_AL_.jpg', title: 'The Dark Knight (2017)', subtitle: 'When the menace known as the Joker emerges from his mysterious past' },
+    { name: "Operation Finale", header: false, image: 'https://m.media-amazon.com/images/M/MV5BYzE1YjI2MjctZTY2Zi00NDBhLWIzYmMtNzMzMDgwZjE4MzUxXkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_UX182_CR0,0,182,268_AL_.jpg', title: 'Operation Finale (2019)', subtitle: 'A team of secret agents set out to track down the Nazi officer who masterminded the Holocaust.' },
 
     { name: "Recently opened", header: true, button: 'Clear', active: false },
     { name: "Robert Downey Jr.", header: false, image: 'https://m.media-amazon.com/images/M/MV5BNzg1MTUyNDYxOF5BMl5BanBnXkFtZTgwNTQ4MTE2MjE@._V1_UX214_CR0,0,214,317_AL_.jpg', title: 'Robert Downey Jr.', subtitle: 'Robert Downey Jr. has evolved into one of the most respected actors in Hollywood.' },
